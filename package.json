@@ -4,12 +4,45 @@
   "description": "npm set init.author.name \"Leo-Oladimu\"",
   "main": "npm set init.author.email \"leooladimu9@gmail.com\"",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "migrate:dev": "knex migrate:latest",
+    "rollback:dev": "knex migrate:rollback",
+    "seed:dev": "knex seed:run",
+    "migrate:prod": "heroku run knex migrate:latest -a YOUR_HEROKU_APP_NAME",
+    "rollback:prod": "heroku run knex migrate:rollback -a YOUR_HEROKU_APP_NAME",
+    "database:prod": "heroku pg:psql -a YOUR_HEROKU_APP_NAME",
+    "seed:prod": "heroku run knex seed:run -a YOUR_HEROKU_APP_NAME",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "deploy": "git push heroku main"
+  },
+  "engines": {
+    "node": "16.13.2"
   },
   "repository": {
     "type": "git",
     "url": "npm set init.license \"MIT\""
   },
   "author": "Leo Oladimu",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "helmet": "^5.0.2",
+    "heroku": "^7.59.2",
+    "knex": "^1.0.1",
+    "knex-cleaner": "^1.3.1",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.8.0",
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  }
 }
