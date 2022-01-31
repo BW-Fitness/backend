@@ -71,6 +71,14 @@ describe('client',()=>{
         const res = await request(server).get('/api/classes/:query').send({location: 'local'});
         expect(res.body.message).toMatch('classes near local:');
     });
+
+    it('can RESERVE a spot in a class, returns new class size attribute', async () => {
+
+    });
+
+    it('can CANCEL a reservation, returns new class size attribute', async () => {
+
+    });
 });
 
     //TODOS ::
