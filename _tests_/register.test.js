@@ -1,22 +1,22 @@
 /* eslint-disable */
 const request = require('supertest');
 const server = require('../api/server');
-//const db = require('../data/dbConfig');
+const db = require('../data/db-config');
 // const bcrypt = require('bcryptjs');
 // const jwtDecode = require('jwt-decode');
 
-// beforeAll(async () => {
-//   await db.migrate.rollback();
-//   await db.migrate.latest();
-// });
+beforeAll(async () => {
+  await db.migrate.rollback();
+  await db.migrate.latest();
+});
 
-// beforeEach(async () => {
-//   await db.seed.run();
-// });
+beforeEach(async () => {
+  await db.seed.run();
+});
 
-// afterAll(async () => {
-//   await db.destroy();
-// });
+afterAll(async () => {
+  await db.destroy();
+});
 
 describe('registry',()=>{
 
