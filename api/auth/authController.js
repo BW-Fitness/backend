@@ -19,7 +19,7 @@ const authController = {
   },
 
   async login(req, res, next) {
-    const verifiedPassword = await bcrypt.compare(req.body.password, req.user.password);
+    const verifiedPassword = await bcrypt.compareSync(req.body.password, req.user.password);
     const token = buildToken(req.user);
     if (verifiedPassword) {
       res.status(200).json({ 
