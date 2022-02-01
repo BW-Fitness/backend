@@ -3,17 +3,21 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-    return knex.schema.createTable('users', users => {
-        users.increments();
-        users.string('username', 255).notNullable().unique();
-        users.string('password', 255).notNullable();
-    });
+    return knex.schema
+        .createTable('classes', table => {
+            table.increments('class_id');
+            table.string('name', 100).notNullable();
+            table.string('type', 100).notNullable();
+            table.date('start time').notNullable();
+            table.time('duration').notNullable()
+            table.string('intensity level', 100).notNullable();
+            table.string('location', 100).notNullable();
+
+
+
+        });
 };
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 exports.down = function (knex) {
-    return knex.schema.dropTableIfExists('users');
+    return knex.schema.dropTableIfExists('classes');
 };
