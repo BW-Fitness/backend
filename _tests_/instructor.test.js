@@ -3,6 +3,7 @@ const request = require('supertest');
 const server = require('../api/server');
 const db = require('../data/db');
 const Class = require('../api/classes-model'); //CHECK THAT THESE PATHS WORK !!!
+const Instructor = require('../api/instructor-model'); //will need to create an instructor model, of course !
 // const bcrypt = require('bcryptjs');
 // const jwtDecode = require('jwt-decode');
 
@@ -72,10 +73,15 @@ const mockedGet = () => {
        //then expect the class by id to return undefined
        const classdel = await Class.getById(1);
        const res = await request(server).delete('/api/classes/:id').send(1); //send the id of the class to be deleted!
-       expect(classdel).toBeFalsy(); //assuming undefined is a 'false' value !
-     })
+       expect(classdel).toBeUndefined();
+     });
+
+    //  it('has a punch pass for classes', async () => {
+    //    const punchPass = await Instructor.getById(1);
+    //    expect(punchPass).toMatchObject({punchMethod: 'punchmethod'}); //will do more research on how to implement this test ! 
+    //  }); 
  });
 
 ////            TODOS ::                ////
            
-// -authenticated instructor can create a 'punch pass' for each type of class they offer, returns proper response from the db -- TO DO still !
+// -punchcard check implement !
