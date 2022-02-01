@@ -16,6 +16,16 @@ const created = {
     punchPass: 'punchpass'
 }
 
+const updater = {
+  date: 'updated',
+  time: 'time',
+    duration: 'duration',
+    type: 'type',
+    intensity: 'intensity',
+    location: 'location',
+
+}
+
 beforeAll(async () => {
   await db.migrate.rollback();
   await db.migrate.latest();
@@ -46,12 +56,26 @@ const mockedGet = () => {
         expect(res.body).toMatchObject(created);
      });
 
-     it('can UPDATE a class, returns that class from the db')
+     it('can UPDATE a class, returns that class from the db', async () => { 
+       //first, get a class by id from the db
+       const classold = await Class.getById(1);
+       //then, do post to classes/:id
+       const res = await request(server).post('/api/classes/:id').send(updater);
+       //then, get that same class by id and check if updated with new values.
+       const updated = await request(server).get('/api/classes/:id').send(classold);
+       expect(updated).toMatchObject(updater); //now we pray I have this in the right order ! :-) 
+     })
+
+     it('can DELETE a class, and returns the new length of the db', async () => {
+       //similar logic as above, get a class by the id
+       //then do a DELETE request, passing in the id
+       //then expect the class by id to return undefined
+       const classdel = await Class.getById(1);
+       const res = await request(server).delete('/api/classes/:id').send(1); //send the id of the class to be deleted!
+       expect(classdel).toBeFalsy(); //assuming undefined is a 'false' value !
+     })
  });
 
 ////            TODOS ::                ////
-// -authenticated instructor can CREATE a class, returns proper response from the db X
-// -authenticated instructor can UPDATE a class, returns updated response from the db
-// -authenticated instructor can DELETE a class, expects that deleted class get to be null
-//////////////////////////////////                  expect getAll length to be (-1)
-// -authenticated instructor can create a 'punch pass' for each type of class they offer, returns proper response from the db
+           
+// -authenticated instructor can create a 'punch pass' for each type of class they offer, returns proper response from the db -- TO DO still !
