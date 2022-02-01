@@ -1,6 +1,6 @@
-// const Users = require('../users/users-model');
+const Users = require('../users/users-model');
 const userSchema = require('./validation');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
 function restricted(req, res, next) {
   const token = req.headers.authorization;

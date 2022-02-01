@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const Users = require('../users/users-model');
-const buildToken = require('./utils/buildToken');
+// const buildToken = require('./utils/buildToken');
 const ROUNDS = process.env.ROUNDS || 8;
 
 const authController = {
