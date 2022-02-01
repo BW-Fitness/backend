@@ -7,14 +7,14 @@ async function validateId(req, res, next) {
     return next({
       status: 400,
       source: 'Error while getting the class',
-      message: 'invalid class id provided'
+      message: 'invalid class id'
     });
   const [eClass] = await Classes.getClassById({ class_id });
   if (!eClass) 
     return next({
       status: 401,
-      source: 'error while getting the class',
-      message: 'That class does not exist',
+      source: 'Error getting the class',
+      message: 'That class is a lie!',
     })
     req.eClass = eClass;
       next()
@@ -22,7 +22,7 @@ async function validateId(req, res, next) {
 
 async function validateBody(req, res, next) {
   let source;
-  if (req.method === 'POST') source = 'Error while creating a new  class.'
+  if (req.method === 'POST') source = 'No new class today.'
     else if (req.method === 'PUT') source = 'Error while updating a class' 
   try {
     req.body = await classesSchema.validateAsync(req.body, { stripUnknown: true })

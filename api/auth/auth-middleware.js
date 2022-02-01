@@ -1,4 +1,4 @@
-// const Users = require('../users/users-model');
+const Users = require('../users/users-model');
 const userSchema = require('./validation');
 const jwt = require('jsonwebtoken');
 

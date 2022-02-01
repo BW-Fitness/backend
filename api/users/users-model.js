@@ -1,4 +1,4 @@
-const db = require('../data/db-config');
+const db = require('../data/db-js');
 const Classes = require('../classes/classes-model');
 
 function findUser(filter) {
