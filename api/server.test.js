@@ -1,19 +1,20 @@
+/* eslint-disable */
 const request = require('supertest');
-const server = require('../server');
-// const db = require('../data/db-config');
+const server = require('./server');
+// const db = require('../data/db');
 
-beforeAll(async () => {
-  await db.migrate.rollback();
-  await db.migrate.latest();
-});
+// beforeAll(async () => {
+//   await db.migrate.rollback();
+//   await db.migrate.latest();
+// });
 
-beforeEach(async () => {
-  await db.seed.run();
-});
+// beforeEach(async () => {
+//   await db.seed.run();
+// });
 
-afterAll(async () => {
-  await db.destroy();
-});
+// afterAll(async () => {
+//   await db.destroy();
+// });
 
 it('sanity check', () => {
   expect(true).not.toBe(false);
