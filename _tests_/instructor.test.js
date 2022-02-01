@@ -1,7 +1,7 @@
 /* eslint-disable */
 const request = require('supertest');
 const server = require('../api/server');
-const db = require('../data/db-config');
+const db = require('../data/db');
 const Class = require('../api/classes-model'); //CHECK THAT THESE PATHS WORK !!!
 // const bcrypt = require('bcryptjs');
 // const jwtDecode = require('jwt-decode');
@@ -42,7 +42,7 @@ const mockedGet = () => {
     });
 
      it('can CREATE a class, returns that class from the db', async () => {
-        const res = await request(server).post('/api/classes').send(created);
+        const res = await request(server).post('/api/classes').send(created); //this is assuming that the post endpoint is properly configured, of course...
         expect(res.body).toMatchObject(created);
      });
 

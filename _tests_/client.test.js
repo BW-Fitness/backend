@@ -1,7 +1,7 @@
 /* eslint-disable */
 const request = require('supertest');
 const server = require('../api/server');
-const db = require('../data/db-config');
+const db = require('../data/db');
 // const bcrypt = require('bcryptjs');
 // const jwtDecode = require('jwt-decode');
 
