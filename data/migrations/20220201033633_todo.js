@@ -44,8 +44,10 @@ exports.up = function (knex) {
         })
 };
 
+
 exports.down = function (knex) {
     return knex.schema.dropTableIfExists('clients');
     return knex.schema.dropTableIfExists('instructors');
     return knex.schema.dropTableIfExists('classes');
 };
+
