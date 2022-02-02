@@ -18,7 +18,7 @@ exports.up = function (knex) {
 
         .createTable('instructors', table => {
             table.increments('instructor_id');
-            table.string('instructor_name').notNullable();
+            table.string('instructor_name').unique().notNullable();
             table.string('password').notNullable();
             table.integer('class_id')
                 .unsigned()
@@ -28,10 +28,10 @@ exports.up = function (knex) {
                 .onDelete('RESTRICT')
                 .onUpdate('RESTRICT')
         })
-        
+
         .createTable('clients', table => {
             table.increments('client_id');
-            table.string('client_name').notNullable();
+            table.string('client_name').unique().notNullable();
             table.string('password').notNullable();
             table.integer('class_id')
                 .unsigned()
