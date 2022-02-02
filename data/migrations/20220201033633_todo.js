@@ -19,13 +19,28 @@ exports.up = function (knex) {
         })
         .createTable('instructors', table => {
             table.increments('instructor_id');
-            table.string('instructor_id').notNullable()
+            table.string('instructor_id').notNullable();
+            table.string('instructor_name').notNullable();
+            table.integer('class_id')
+                .unsigned ()
+                .notNullable()
+                .references ('class_id')
+                .inTable('classes')
+                .onDelete('RESTRICT')
+                .onUpdate('RESTRICT')
+
 
         })
         .createTable('clients', table => {
             table.increments('client_id');
             table.string('client_id').notNullable()
-
+            table.integer('class_id')
+                .unsigned ()
+                .notNullable()
+                .references ('class_id')
+                .inTable('classes')
+                .onDelete('RESTRICT')
+                .onUpdate('RESTRICT')
         })
 };
 
