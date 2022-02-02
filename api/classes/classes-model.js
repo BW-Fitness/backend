@@ -1,4 +1,4 @@
-const db = require('../data/db-config');
+const db = require('../../data/db');
 
 function getClasses() {
   return db
@@ -14,7 +14,7 @@ function getClasses() {
       'class_max_size'
     )
     .from('classes')
-};
+}
 
 function getClassById({ class_id }) {
   return db

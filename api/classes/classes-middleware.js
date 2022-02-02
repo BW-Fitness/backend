@@ -18,7 +18,7 @@ async function validateId(req, res, next) {
     })
     req.eClass = eClass;
       next()
-};
+}
 
 async function validateBody(req, res, next) {
   let source;
@@ -34,7 +34,7 @@ async function validateBody(req, res, next) {
       message: err.details[0].message
     })
   }
-};
+}
 
 module.exports = {
   validateId,
