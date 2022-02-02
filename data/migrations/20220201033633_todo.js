@@ -6,7 +6,6 @@ exports.up = function (knex) {
     return knex.schema
         .createTable('classes', table => {
             table.increments('class_id');
-            table.string('class_id').notNullable()
             table.string('name', 100).notNullable();
             table.string('type', 100).notNullable();
             table.date('start time').notNullable();
@@ -15,29 +14,29 @@ exports.up = function (knex) {
             table.string('location', 100).notNullable();
             table.string('current # of registered attendees', 1000).notNullable()
             table.string('max class size', 1000).notNullable()
-
         })
+
         .createTable('instructors', table => {
             table.increments('instructor_id');
-            table.string('instructor_id').notNullable();
             table.string('instructor_name').notNullable();
+            table.string('password').notNullable();
             table.integer('class_id')
-                .unsigned ()
+                .unsigned()
                 .notNullable()
                 .references ('class_id')
                 .inTable('classes')
                 .onDelete('RESTRICT')
                 .onUpdate('RESTRICT')
-
-
         })
+        
         .createTable('clients', table => {
             table.increments('client_id');
-            table.string('client_id').notNullable()
+            table.string('client_name').notNullable();
+            table.string('password').notNullable();
             table.integer('class_id')
-                .unsigned ()
+                .unsigned()
                 .notNullable()
-                .references ('class_id')
+                .references('class_id')
                 .inTable('classes')
                 .onDelete('RESTRICT')
                 .onUpdate('RESTRICT')
@@ -46,8 +45,8 @@ exports.up = function (knex) {
 
 
 exports.down = function (knex) {
-    return knex.schema.dropTableIfExists('clients');
-    return knex.schema.dropTableIfExists('instructors');
-    return knex.schema.dropTableIfExists('classes');
+    return knex.schema.dropTableIfExists('clients')
+    .dropTableIfExists('instructors')
+    .dropTableIfExists('classes');
 };
 
