@@ -21,4 +21,4 @@ module.exports = ({
   user_id, 
   username, 
   role 
-});
+})

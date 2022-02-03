@@ -115,4 +115,4 @@ module.exports = {
     registerUserInClass, 
     updateUsersClass, 
     removeUserFromClass 
-};
+}
