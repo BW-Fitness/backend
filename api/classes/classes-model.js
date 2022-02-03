@@ -1,4 +1,4 @@
-const db = require('../data/db-config');
+const db = require('../../data/db');
 
 function getClasses() {
   return db
@@ -14,7 +14,7 @@ function getClasses() {
       'class_max_size'
     )
     .from('classes')
-};
+}
 
 function getClassById({ class_id }) {
   return db
@@ -31,7 +31,7 @@ function getClassById({ class_id }) {
     )
     .from('classes')
     .where('class_id', parseInt(class_id));
-};
+}
 
 function findBy(filter) {
   return db
@@ -47,7 +47,7 @@ function findBy(filter) {
     )
     .from('classes')
     .where(filter);
-};
+}
 
 async function addClass(newClass) {
   const [newClassObject] = await db('classes')
@@ -63,7 +63,7 @@ async function addClass(newClass) {
       'class_max_size'
   ])
   return newClassObject;
-};
+}
 
 async function updateClass(eClass, id) {
   const [updatedClass] = await db('classes')
@@ -79,7 +79,7 @@ async function updateClass(eClass, id) {
       'class_max_size'
     ])
     return updatedClass;
-};
+}
 
 async function deleteClass(class_id) {
   const [deletedClass] = await db('classes')
@@ -87,7 +87,7 @@ async function deleteClass(class_id) {
     .where('class_id', parseInt(class_id))
     .del()
   return deletedClass;
-};
+}
 
 module.exports = {
     getClasses,

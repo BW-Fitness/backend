@@ -1,4 +1,4 @@
-// const Users = require('../users/users-model');
+const Users = require('../users/users-model');
 const userSchema = require('./validation');
 const jwt = require('jsonwebtoken');
 
@@ -21,7 +21,7 @@ function restricted(req, res, next) {
       req.decoded = decoded;
       next();
     });
-};
+}
 
 function only(userRole) {
   return function instructor(req, res, next){
@@ -33,7 +33,7 @@ function only(userRole) {
         message: 'Know your role.' 
       });
     };
-};
+}
 
 async function checkUsernameExists(req, res, next) {
   try {
@@ -66,8 +66,8 @@ async function checkUsernameExists(req, res, next) {
       source: 'What is this username you speak of?',
       message: "Can't find that username."
     })
-  };
-};
+  }
+}
 
 async function validateBody(req, res, next) {
   try {
@@ -79,12 +79,12 @@ async function validateBody(req, res, next) {
       source: 'Username or password went left',
       message: err.details[0].message
     });
-  };
-};
+  }
+}
 
 module.exports = {
   restricted,
   only,
   checkUsernameExists,
   validateBody
-};
+}
