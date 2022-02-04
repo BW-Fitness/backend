@@ -1,6 +1,9 @@
-
-exports.up = async (knex) => {
-    await knex.schema
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+exports.up = async(knex) => {
+   await knex.schema
         .createTable('clients', (table) => {
             table.increments('client_id')
             table.string('client_name', 64).notNullable()
@@ -75,12 +78,17 @@ exports.up = async (knex) => {
             table.integer('current_class_num').defaultTo(0)
             table.integer('max_class_num').defaultTo(6)
         })
-}
+};
 
-exports.down = async (knex) => {
-    await knex.schema.dropTableIfExists('client_punch_card')
-    await knex.schema.dropTableIfExists('client_reservations')
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+
+exports.down = async function(knex) {
+   await knex.schema.dropTableIfExists('client_punch_card')
+  await knex.schema.dropTableIfExists('client_reservations')
     await knex.schema.dropTableIfExists('classes')
     await knex.schema.dropTableIfExists('instructors')
     await knex.schema.dropTableIfExists('clients')
-}
+};
