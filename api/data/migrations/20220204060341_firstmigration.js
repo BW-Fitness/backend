@@ -2,7 +2,7 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = async(knex) => {
+exports.up = async function(knex) {
    await knex.schema
         .createTable('clients', (table) => {
             table.increments('client_id')
@@ -86,7 +86,7 @@ exports.up = async(knex) => {
  */
 
 exports.down = async function(knex) {
-   await knex.schema.dropTableIfExists('client_punch_card')
+  await knex.schema.dropTableIfExists('client_punch_card')
   await knex.schema.dropTableIfExists('client_reservations')
     await knex.schema.dropTableIfExists('classes')
     await knex.schema.dropTableIfExists('instructors')

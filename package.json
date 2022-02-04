@@ -38,8 +38,6 @@
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
-    "fkill": "^8.0.0",
-    "fkill-cli": "^7.0.0",
     "helmet": "^5.0.2",
     "heroku": "^7.59.2",
     "joi": "^17.6.0",
